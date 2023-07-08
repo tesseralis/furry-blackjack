@@ -6,7 +6,7 @@ var card_scene = load("res://card.tscn")
 signal deal_button_pressed(id)
 signal clear_button_pressed(id)
 
-var offset = Vector2(10, 50)
+var offset = Vector2(35, 5)
 var card_pos = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.

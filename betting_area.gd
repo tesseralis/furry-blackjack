@@ -16,7 +16,6 @@ func _ready():
 	$GUI/PayoutButton.pressed.connect(_on_add_button_pressed)
 	$GUI/CollectButton.pressed.connect(_on_collect_button_pressed)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

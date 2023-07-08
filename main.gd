@@ -27,13 +27,13 @@ func _ready():
 	
 		player.betting_area.add_button_pressed.connect(_on_bet_add_button_pressed.bind(id))
 		player.betting_area.collect_button_pressed.connect(_on_bet_collect_button_pressed.bind(id))
-		
+		player.dealer_hand = $DealerHand
 	dealer.deal_button_pressed.connect(_on_dealer_deal_button_pressed)
 	dealer.clear_button_pressed.connect(_on_dealer_clear_button_pressed)
 	end_hand_button.pressed.connect(_end_hand_button_pressed)
 	new_hand_button.pressed.connect(_new_hand_button_pressed)
 	
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	activate_random_player()
 	start_hand()
 

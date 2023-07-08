@@ -36,7 +36,7 @@ func add_card(card_value):
 	cards.add_child(card)
 	update_label()
 	cards_updated.emit(get_card_values())
-	
+
 
 func clear_cards():
 	var card_values = []

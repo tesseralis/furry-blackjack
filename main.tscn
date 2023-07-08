@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://rnnr560e8kxx"]
+[gd_scene load_steps=8 format=3 uid="uid://rnnr560e8kxx"]
 
 [ext_resource type="Texture2D" uid="uid://bxh0ui5auimmn" path="res://Art/dog.png" id="1_fyf0q"]
 [ext_resource type="Script" path="res://main.gd" id="1_odqno"]
 [ext_resource type="PackedScene" uid="uid://bdsqfwh1asx8p" path="res://stack.tscn" id="2_j76hp"]
 [ext_resource type="PackedScene" uid="uid://ch7rhvxkvjegs" path="res://deck.tscn" id="4_aa6yx"]
+[ext_resource type="PackedScene" uid="uid://isd5tt1p5qrb" path="res://betting_area.tscn" id="4_lfthc"]
 [ext_resource type="Texture2D" uid="uid://bpfgbamhgmubh" path="res://Art/chip-tray.png" id="5_ib347"]
 [ext_resource type="PackedScene" uid="uid://col58ifbqrbi7" path="res://dealer_hand.tscn" id="6_kk2u2"]
 
@@ -46,6 +47,20 @@ color = Color(0.388235, 0.619608, 0.321569, 1)
 position = Vector2(948, 972)
 scale = Vector2(0.269043, 0.181152)
 texture = ExtResource("5_ib347")
+
+[node name="BettingAreas" type="Node2D" parent="."]
+
+[node name="BettingArea1" parent="BettingAreas" instance=ExtResource("4_lfthc")]
+position = Vector2(291, 475)
+
+[node name="BettingArea2" parent="BettingAreas" instance=ExtResource("4_lfthc")]
+position = Vector2(756, 477)
+
+[node name="BettingArea3" parent="BettingAreas" instance=ExtResource("4_lfthc")]
+position = Vector2(1242, 477)
+
+[node name="BettingArea4" parent="BettingAreas" instance=ExtResource("4_lfthc")]
+position = Vector2(1708, 480)
 
 [node name="Stacks" type="Node2D" parent="."]
 

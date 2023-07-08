@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bejb7pt3urvqj"]
+
+[ext_resource type="Texture2D" uid="uid://de4cwlsdj6n6k" path="res://Art/Chip.png" id="1_f1xof"]
+
+[node name="Chip" type="Node2D"]
+
+[node name="ChipSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("1_f1xof")

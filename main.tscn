@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rnnr560e8kxx"]
+[gd_scene load_steps=9 format=3 uid="uid://rnnr560e8kxx"]
 
 [ext_resource type="Texture2D" uid="uid://bxh0ui5auimmn" path="res://Art/dog.png" id="1_fyf0q"]
 [ext_resource type="Script" path="res://main.gd" id="1_odqno"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://kq21ncwu4jcf" path="res://player.tscn" id="6_1eg7b"]
 [ext_resource type="PackedScene" uid="uid://col58ifbqrbi7" path="res://dealer_hand.tscn" id="6_kk2u2"]
 [ext_resource type="Resource" uid="uid://bcoqmty4tggjc" path="res://Resources/Strategies/naive_hit_strategy.tres" id="7_1qoqd"]
+[ext_resource type="Resource" uid="uid://cbhi2dnxr0qun" path="res://Resources/Strategies/optimal_hit_strategy.tres" id="7_q7ogb"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_odqno")
@@ -62,7 +63,7 @@ position = Vector2(1808, 640)
 
 [node name="Player" parent="Players" instance=ExtResource("6_1eg7b")]
 position = Vector2(283, 492)
-strategy = ExtResource("7_1qoqd")
+strategy = ExtResource("7_q7ogb")
 
 [node name="Player2" parent="Players" instance=ExtResource("6_1eg7b")]
 position = Vector2(748, 492)

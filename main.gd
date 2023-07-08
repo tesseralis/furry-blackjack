@@ -32,7 +32,7 @@ func _on_dealer_deal_button_pressed():
 func _on_dealer_clear_button_pressed():
 	dealer.clear_cards()
 	for player in players.get_children():
-		player.set_dealer_card(dealer.get_public_card())
+		player.set_dealer_card(0)
 
 
 func _on_deal_button_pressed(id):

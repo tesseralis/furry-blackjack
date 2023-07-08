@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://rnnr560e8kxx"]
+[gd_scene load_steps=7 format=3 uid="uid://rnnr560e8kxx"]
 
 [ext_resource type="Texture2D" uid="uid://bxh0ui5auimmn" path="res://Art/dog.png" id="1_fyf0q"]
 [ext_resource type="Script" path="res://main.gd" id="1_odqno"]
 [ext_resource type="PackedScene" uid="uid://bdsqfwh1asx8p" path="res://stack.tscn" id="2_j76hp"]
 [ext_resource type="PackedScene" uid="uid://ch7rhvxkvjegs" path="res://deck.tscn" id="4_aa6yx"]
 [ext_resource type="Texture2D" uid="uid://bpfgbamhgmubh" path="res://Art/chip-tray.png" id="5_ib347"]
+[ext_resource type="PackedScene" uid="uid://col58ifbqrbi7" path="res://dealer_hand.tscn" id="6_kk2u2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_odqno")
@@ -15,28 +16,28 @@ offset_bottom = 1088.0
 color = Color(0.603922, 0.627451, 0.678431, 1)
 
 [node name="Guest" type="Sprite2D" parent="."]
-position = Vector2(296, 344)
+position = Vector2(281, 257)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_fyf0q")
 
 [node name="Guest2" type="Sprite2D" parent="."]
-position = Vector2(736, 344)
+position = Vector2(736, 249)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_fyf0q")
 
 [node name="Guest3" type="Sprite2D" parent="."]
-position = Vector2(1216, 336)
+position = Vector2(1243, 254)
 scale = Vector2(-0.25, 0.25)
 texture = ExtResource("1_fyf0q")
 
 [node name="Guest4" type="Sprite2D" parent="."]
-position = Vector2(1672, 312)
+position = Vector2(1708, 256)
 rotation = 3.14159
 scale = Vector2(0.25, -0.25)
 texture = ExtResource("1_fyf0q")
 
 [node name="Table" type="ColorRect" parent="."]
-offset_top = 472.0
+offset_top = 422.0
 offset_right = 1912.0
 offset_bottom = 1088.0
 color = Color(0.388235, 0.619608, 0.321569, 1)
@@ -49,16 +50,19 @@ texture = ExtResource("5_ib347")
 [node name="Stacks" type="Node2D" parent="."]
 
 [node name="PlayerStack1" parent="Stacks" instance=ExtResource("2_j76hp")]
-position = Vector2(304, 512)
+position = Vector2(304, 596)
 
 [node name="PlayerStack2" parent="Stacks" instance=ExtResource("2_j76hp")]
-position = Vector2(752, 512)
+position = Vector2(752, 596)
 
 [node name="PlayerStack3" parent="Stacks" instance=ExtResource("2_j76hp")]
-position = Vector2(1208, 512)
+position = Vector2(1208, 596)
 
 [node name="PlayerStack4" parent="Stacks" instance=ExtResource("2_j76hp")]
-position = Vector2(1664, 512)
+position = Vector2(1664, 596)
+
+[node name="DealerHand" parent="Stacks" instance=ExtResource("6_kk2u2")]
+position = Vector2(754, 772)
 
 [node name="Deck" parent="." instance=ExtResource("4_aa6yx")]
 position = Vector2(80, 640)

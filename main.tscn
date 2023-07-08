@@ -60,3 +60,6 @@ texture = ExtResource("2_i1lke")
 
 [node name="Deck" parent="." instance=ExtResource("4_aa6yx")]
 position = Vector2(51, 492)
+
+[node name="Discard" parent="." instance=ExtResource("4_aa6yx")]
+position = Vector2(1096, 496)

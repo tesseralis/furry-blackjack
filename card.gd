@@ -4,7 +4,7 @@ var value = "A"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_value("K")
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -12,4 +12,4 @@ func _process(delta):
 
 func set_value(new_value):
 	value = new_value
-	$Text.text = value
+	$Text.text = str(value)

@@ -6,7 +6,7 @@
 script = ExtResource("1_70fm1")
 
 [node name="Shoe" type="ColorRect" parent="."]
-offset_left = -8.0
-offset_right = 8.0
-offset_bottom = 64.0
+offset_left = -16.0
+offset_top = -128.0
+offset_right = 16.0
 color = Color(0.74902, 0.690196, 0.690196, 1)

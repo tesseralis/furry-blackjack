@@ -55,6 +55,7 @@ func leave():
 func _on_hand_start():
 	if activated:
 		chat_bubble.show_text("Deal me in!")
+		betting_area.add_chips(range(1, 4).pick_random())
 	
 func _on_hand_end():
 	var player_value = HitStrategy.sum(stack.get_card_values())

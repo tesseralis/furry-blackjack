@@ -54,8 +54,7 @@ func _on_collect_button_pressed():
 func _on_hand_start():
 	$GUI/PayoutButton.disabled = true
 	$GUI/CollectButton.disabled = true
-	if $GUI.visible:
-		add_chips(range(1, 4).pick_random())
+
 	
 func _on_hand_end():
 	$GUI/PayoutButton.disabled = false

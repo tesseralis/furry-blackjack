@@ -15,6 +15,9 @@ func _ready():
 func _process(delta):
 	pass
 
+func is_empty():
+	return deck.is_empty()
+
 func init_deck():
 	deck = create_deck()
 	set_shoe_height()
@@ -28,6 +31,12 @@ func take_card():
 	var card = deck.pop_back()
 	set_shoe_height()
 	return card
+
+func take_all() -> Array:
+	var values = deck.duplicate()
+	deck.clear()
+	set_shoe_height()
+	return values
 
 func add_cards(cards):
 	deck.append_array(cards)
@@ -45,3 +54,6 @@ func dupe_array(arr, count):
 	for _i in range(count):
 		res.append_array(arr)
 	return res
+
+func shuffle():
+	deck.shuffle()

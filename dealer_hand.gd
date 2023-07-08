@@ -53,6 +53,6 @@ func _on_clear_button_pressed():
 	clear_button_pressed.emit()
 
 func get_public_card() -> int:
-	if cards.get_children().is_empty():
+	if cards.get_children().size() < 2:
 		return 0
-	return cards.get_child(0).get_int_value()
+	return cards.get_child(1).get_int_value()

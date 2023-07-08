@@ -6,16 +6,30 @@
 script = ExtResource("1_b5110")
 
 [node name="DealButton" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -21.5
+offset_left = -51.0
 offset_top = -31.0
-offset_right = 21.5
-grow_horizontal = 2
+offset_right = -8.0
+grow_horizontal = 0
 grow_vertical = 0
 text = "Deal"
 
+[node name="ClearButton" type="Button" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -31.0
+offset_right = 57.0
+grow_vertical = 0
+text = "Clear"
+
+[node name="Cards" type="Node2D" parent="."]
+position = Vector2(0, 40)
+
 [connection signal="pressed" from="DealButton" to="." method="_on_deal_button_pressed"]
+[connection signal="pressed" from="ClearButton" to="." method="_on_clear_button_pressed"]

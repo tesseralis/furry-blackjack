@@ -4,9 +4,10 @@ extends Node2D
 
 var card_scene = load("res://card.tscn")
 signal deal_button_pressed(id)
+signal clear_button_pressed(id)
 
 var offset = Vector2(10, 50)
-var card_pos = Vector2(0, 30)
+var card_pos = Vector2.ZERO
 var id = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -24,8 +25,20 @@ func add_card(card_value):
 	card.position = card_pos
 	card_pos += offset
 	# TODO offset the card's position
-	add_child(card)
+	$Cards.add_child(card)
 
+func clear_cards():
+	var card_values = []
+	for card in $Cards.get_children():
+		card_values.append(card.value)
+		card.queue_free()
+	card_pos = Vector2.ZERO
+	return card_values
 
 func _on_deal_button_pressed():
 	deal_button_pressed.emit(id)
+
+
+func _on_clear_button_pressed():
+	clear_button_pressed.emit(id)
+

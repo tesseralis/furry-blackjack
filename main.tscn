@@ -54,10 +54,9 @@ position = Vector2(744, 328)
 position = Vector2(992, 328)
 
 [node name="Hand" type="Sprite2D" parent="."]
-position = Vector2(584, 544)
+position = Vector2(584, 549)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_i1lke")
 
 [node name="Deck" parent="." instance=ExtResource("4_aa6yx")]
-visible = false
-position = Vector2(144, 608)
+position = Vector2(51, 492)

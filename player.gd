@@ -6,13 +6,16 @@ extends Node2D
 @export var strategy: HitStrategy
 
 @onready var dealer_card: int = 0
+var activated = false
 
 func _ready():
 	stack.cards_updated.connect(_on_cards_updated)
 	GlobalEvents.hand_start.connect(_on_hand_start)
 	GlobalEvents.hand_end.connect(_on_hand_end)
-	
+
 func _on_cards_updated(cards: Array):
+	if not activated:
+		return
 	if cards.size() < 2:
 		chat_bubble.show_text("Deal me in!")
 	elif HitStrategy.sum(cards) > 21:
@@ -33,8 +36,22 @@ func set_dealer_card(value: int):
 	dealer_card = value
 	_on_cards_updated(stack.get_card_values())
 
+func activate():
+	activated = true
+	chat_bubble.visible = true
+	stack.visible = true
+	betting_area.activate()
+
+func leave():
+	activated = false
+	chat_bubble.visible = false
+	stack.visible = false
+	betting_area.deactivate()
+
 func _on_hand_start():
-	chat_bubble.show_text("Deal me in!")
+	if activated:
+		chat_bubble.show_text("Deal me in!")
 	
 func _on_hand_end():
+	# TODO take chips if won
 	pass

@@ -36,13 +36,16 @@ color = Color(0.337255, 0.619608, 0.286275, 1)
 [node name="Chips" type="Node2D" parent="."]
 position = Vector2(0, 8)
 
-[node name="PayoutButton" type="Button" parent="."]
+[node name="GUI" type="Node2D" parent="."]
+visible = false
+
+[node name="PayoutButton" type="Button" parent="GUI"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -80.0
+offset_left = -103.0
 offset_top = -40.0
 offset_right = -41.0
 offset_bottom = -9.0
@@ -51,16 +54,16 @@ grow_vertical = 0
 text = "Payout
 "
 
-[node name="CollectButton" type="Button" parent="."]
+[node name="CollectButton" type="Button" parent="GUI"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -88.0
+offset_left = -100.0
 offset_top = 8.0
 offset_right = -39.0
 offset_bottom = 39.0
 grow_horizontal = 0
 text = "Collect"
 
-[connection signal="pressed" from="PayoutButton" to="." method="_on_add_button_pressed"]
-[connection signal="pressed" from="CollectButton" to="." method="_on_collect_button_pressed"]
+[connection signal="pressed" from="GUI/PayoutButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="GUI/CollectButton" to="." method="_on_collect_button_pressed"]

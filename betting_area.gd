@@ -13,8 +13,8 @@ var chip_pos = Vector2.ZERO
 func _ready():
 	GlobalEvents.hand_start.connect(_on_hand_start)
 	GlobalEvents.hand_end.connect(_on_hand_end)
-	$PayoutButton.pressed.connect(_on_add_button_pressed)
-	$CollectButton.pressed.connect(_on_collect_button_pressed)
+	$GUI/PayoutButton.pressed.connect(_on_add_button_pressed)
+	$GUI/CollectButton.pressed.connect(_on_collect_button_pressed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,6 +38,12 @@ func clear_chips():
 	chip_pos = Vector2.ZERO
 	return amount
 
+func activate():
+	$GUI.visible = true
+
+func deactivate():
+	$GUI.visible = false
+	# TODO clear chips
 
 func _on_add_button_pressed():
 	add_button_pressed.emit()
@@ -47,11 +53,12 @@ func _on_collect_button_pressed():
 	collect_button_pressed.emit()
 	
 func _on_hand_start():
-	$PayoutButton.disabled = true
-	$CollectButton.disabled = true
-	add_chips(1)
+	$GUI/PayoutButton.disabled = true
+	$GUI/CollectButton.disabled = true
+	if $GUI.visible:
+		add_chips(range(1, 4).pick_random())
 	
 func _on_hand_end():
-	$PayoutButton.disabled = false
-	$CollectButton.disabled = false
+	$GUI/PayoutButton.disabled = false
+	$GUI/CollectButton.disabled = false
 

@@ -17,23 +17,29 @@ offset_right = 1912.0
 offset_bottom = 1088.0
 color = Color(0.603922, 0.627451, 0.678431, 1)
 
-[node name="Guest" type="Sprite2D" parent="."]
+[node name="PlayerSprites" type="Node2D" parent="."]
+
+[node name="Guest" type="Sprite2D" parent="PlayerSprites"]
+visible = false
 position = Vector2(281, 257)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_fyf0q")
 
-[node name="Guest2" type="Sprite2D" parent="."]
+[node name="Guest2" type="Sprite2D" parent="PlayerSprites"]
+visible = false
 position = Vector2(736, 249)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_fyf0q")
 
-[node name="Guest3" type="Sprite2D" parent="."]
+[node name="Guest3" type="Sprite2D" parent="PlayerSprites"]
+visible = false
 position = Vector2(1243, 254)
 rotation = -3.14159
 scale = Vector2(0.25, -0.25)
 texture = ExtResource("1_fyf0q")
 
-[node name="Guest4" type="Sprite2D" parent="."]
+[node name="Guest4" type="Sprite2D" parent="PlayerSprites"]
+visible = false
 position = Vector2(1708, 256)
 rotation = 3.14159
 scale = Vector2(0.25, -0.25)
@@ -92,3 +98,9 @@ offset_right = 1301.0
 offset_bottom = 855.0
 disabled = true
 text = "New Hand"
+
+[node name="PlayerTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="PlayerTimer" to="." method="_on_player_timer_timeout"]

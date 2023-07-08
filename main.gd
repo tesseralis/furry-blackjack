@@ -14,6 +14,9 @@ enum State {
 
 @onready var current_state: State = State.CARD_PHASE
 
+# List of indices of seats with active players
+var active_seats = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	deck.init_deck()
@@ -29,6 +32,9 @@ func _ready():
 	dealer.clear_button_pressed.connect(_on_dealer_clear_button_pressed)
 	end_hand_button.pressed.connect(_end_hand_button_pressed)
 	new_hand_button.pressed.connect(_new_hand_button_pressed)
+	
+	await get_tree().create_timer(5.0).timeout
+	activate_random_player()
 	start_hand()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,6 +70,14 @@ func _on_bet_add_button_pressed(id):
 func _on_bet_collect_button_pressed(id):
 	# TODO keep track of dealer's chips?
 	players.get_child(id).betting_area.clear_chips()
+
+func activate_random_player():
+	# choose an unactivated seat
+	var unactivated = range(4).filter(func(id): return id not in active_seats)
+	var chosen_id = unactivated.pick_random()
+	# activate the sprite and controller for that player
+	$PlayerSprites.get_child(chosen_id).visible = true
+	players.get_child(chosen_id).activate()
 	
 func deal_card() -> String:
 	if(deck.is_empty()):
@@ -82,10 +96,15 @@ func end_hand():
 	end_hand_button.disabled = true
 	new_hand_button.disabled = false
 	GlobalEvents.hand_end.emit()
-	
+
 func _end_hand_button_pressed():
 	end_hand()
 	
 func _new_hand_button_pressed():
 	#TODO: make sure everything is cleared before we allow the dealer to restart
 	start_hand()
+
+
+func _on_player_timer_timeout():
+	activate_random_player()
+

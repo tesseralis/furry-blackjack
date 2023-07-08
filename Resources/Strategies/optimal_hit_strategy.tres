@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cbhi2dnxr0qun"]
+
+[ext_resource type="Script" path="res://Resources/Strategies/optimal_hit_strategy.gd" id="1_585d8"]
+
+[resource]
+script = ExtResource("1_585d8")

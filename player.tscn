@@ -70,3 +70,5 @@ scale = Vector2(0.473274, 0.452953)
 frames = SubResource("SpriteFrames_n0mly")
 animation = &"hit"
 frame = 4
+
+[connection signal="add_button_pressed" from="BettingArea" to="." method="_on_betting_area_add_button_pressed"]

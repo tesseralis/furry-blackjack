@@ -45,3 +45,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_group_ = true
+
+[connection signal="add_button_pressed" from="BettingArea" to="." method="_on_betting_area_add_button_pressed"]

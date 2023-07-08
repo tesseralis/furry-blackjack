@@ -36,6 +36,9 @@ func clear_chips():
 		child.queue_free()
 	chip_pos = Vector2.ZERO
 	return amount
+	
+func get_amount():
+	return $Chips.get_child_count()
 
 func activate():
 	$GUI.visible = true
@@ -54,7 +57,6 @@ func _on_collect_button_pressed():
 func _on_hand_start():
 	$GUI/PayoutButton.disabled = true
 	$GUI/CollectButton.disabled = true
-
 	
 func _on_hand_end():
 	$GUI/PayoutButton.disabled = false

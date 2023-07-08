@@ -8,6 +8,8 @@ var dealer_hand
 
 @onready var dealer_card: int = 0
 var activated = false
+var current_bet = 0
+var awaiting_payout = false
 
 func _ready():
 	stack.cards_updated.connect(_on_cards_updated)
@@ -50,9 +52,14 @@ func leave():
 	betting_area.deactivate()
 
 func _on_hand_start():
+	if awaiting_payout:
+		# TODO get angry you haven't been paid
+		awaiting_payout = false
+		chat_bubble.show_text("What's the big idea!")
 	if activated:
 		chat_bubble.show_text("Deal me in!")
-		betting_area.add_chips(range(1, 4).pick_random())
+		current_bet = range(1, 4).pick_random()
+		betting_area.add_chips(current_bet)
 	
 func _on_hand_end():
 	var player_value = HitStrategy.sum(stack.get_card_values())
@@ -61,7 +68,15 @@ func _on_hand_end():
 	if player_value <= 21:
 		if dealer_value > 21 or player_value > dealer_value:
 			chat_bubble.show_text("I won!")
+			awaiting_payout = true
 		elif dealer_value > player_value:
 			chat_bubble.show_text("Rats...")
 		else:
 			chat_bubble.show_text("It's a draw...")
+
+
+func _on_betting_area_add_button_pressed():
+	if awaiting_payout and betting_area.get_amount() >= 2 * current_bet:
+		betting_area.clear_chips()
+		awaiting_payout = false
+

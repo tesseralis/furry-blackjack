@@ -5,6 +5,7 @@ extends Node2D
 @onready var card_scene = preload("res://card.tscn")
 @onready var card_value_label = $CardValue
 @onready var cards = $Cards
+
 signal deal_button_pressed
 signal clear_button_pressed
 signal cards_updated(new_cards: Array)
@@ -14,6 +15,10 @@ signal cards_updated(new_cards: Array)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalEvents.hand_end.connect(_on_hand_end)
+	GlobalEvents.hand_start.connect(_on_hand_start)
+	$DealButton.pressed.connect(_on_deal_button_pressed)
+	$ClearButton.pressed.connect(_on_clear_button_pressed)
 	update_label()
 	
 
@@ -56,3 +61,11 @@ func _on_deal_button_pressed():
 func _on_clear_button_pressed():
 	clear_button_pressed.emit()
 
+func _on_hand_end():
+	$DealButton.disabled = true
+	$ClearButton.disabled = false
+	pass
+	
+func _on_hand_start():
+	$DealButton.disabled = false
+	$ClearButton.disabled = true

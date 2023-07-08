@@ -11,7 +11,10 @@ var chip_pos = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	GlobalEvents.hand_start.connect(_on_hand_start)
+	GlobalEvents.hand_end.connect(_on_hand_end)
+	$PayoutButton.pressed.connect(_on_add_button_pressed)
+	$CollectButton.pressed.connect(_on_collect_button_pressed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,4 +45,13 @@ func _on_add_button_pressed():
 
 func _on_collect_button_pressed():
 	collect_button_pressed.emit()
+	
+func _on_hand_start():
+	$PayoutButton.disabled = true
+	$CollectButton.disabled = true
+	add_chips(1)
+	
+func _on_hand_end():
+	$PayoutButton.disabled = false
+	$CollectButton.disabled = false
 

@@ -9,6 +9,8 @@ extends Node2D
 
 func _ready():
 	stack.cards_updated.connect(_on_cards_updated)
+	GlobalEvents.hand_start.connect(_on_hand_start)
+	GlobalEvents.hand_end.connect(_on_hand_end)
 	
 func _on_cards_updated(cards: Array):
 	if cards.size() < 2:
@@ -24,3 +26,9 @@ func _on_cards_updated(cards: Array):
 func set_dealer_card(value: int):
 	dealer_card = value
 	_on_cards_updated(stack.get_card_values())
+
+func _on_hand_start():
+	chat_bubble.show_text("Deal me in!")
+	
+func _on_hand_end():
+	pass

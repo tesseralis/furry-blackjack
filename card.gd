@@ -15,7 +15,6 @@ func set_value(new_value: String):
 	value = new_value
 	$Text.text = str(value)
 
-
 func get_int_value() -> int:
 	if value == "A":
 		return 1

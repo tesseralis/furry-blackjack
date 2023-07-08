@@ -76,3 +76,19 @@ strategy = ExtResource("7_1qoqd")
 [node name="Player4" parent="Players" instance=ExtResource("6_1eg7b")]
 position = Vector2(1726, 485)
 strategy = ExtResource("7_1qoqd")
+
+[node name="EndHandButton" type="Button" parent="."]
+offset_left = 1207.0
+offset_top = 711.0
+offset_right = 1301.0
+offset_bottom = 778.0
+disabled = true
+text = "End Hand"
+
+[node name="NewHandButton" type="Button" parent="."]
+offset_left = 1207.0
+offset_top = 788.0
+offset_right = 1301.0
+offset_bottom = 855.0
+disabled = true
+text = "New Hand"

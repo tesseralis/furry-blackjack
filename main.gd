@@ -4,6 +4,15 @@ extends Node2D
 @onready var players = $Players
 @onready var dealer = $DealerHand
 @onready var discard = $Discard
+@onready var end_hand_button: Button = $EndHandButton
+@onready var new_hand_button: Button = $NewHandButton
+
+enum State {
+	CARD_PHASE,
+	COLLECTION_PHASE
+}
+
+@onready var current_state: State = State.CARD_PHASE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +27,9 @@ func _ready():
 		
 	dealer.deal_button_pressed.connect(_on_dealer_deal_button_pressed)
 	dealer.clear_button_pressed.connect(_on_dealer_clear_button_pressed)
+	end_hand_button.pressed.connect(_end_hand_button_pressed)
+	new_hand_button.pressed.connect(_new_hand_button_pressed)
+	start_hand()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -59,3 +71,21 @@ func deal_card() -> String:
 		deck.add_cards(discard.take_all())
 		deck.shuffle()
 	return deck.take_card()
+
+func start_hand():
+	end_hand_button.disabled = false
+	new_hand_button.disabled = true
+	current_state = State.CARD_PHASE
+	GlobalEvents.hand_start.emit()
+
+func end_hand():
+	end_hand_button.disabled = true
+	new_hand_button.disabled = false
+	GlobalEvents.hand_end.emit()
+	
+func _end_hand_button_pressed():
+	end_hand()
+	
+func _new_hand_button_pressed():
+	#TODO: make sure everything is cleared before we allow the dealer to restart
+	start_hand()

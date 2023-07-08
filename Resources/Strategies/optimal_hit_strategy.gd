@@ -1,6 +1,6 @@
 extends HitStrategy
 
-func should_hit(dealer_card: int, cards: Array[int]) -> bool:
+func should_hit(dealer_card: int, cards: Array) -> bool:
 	var total_amount := sum(cards)
 	if total_amount <= 11:
 		return true

@@ -1,10 +1,10 @@
 extends Resource
 class_name HitStrategy
 
-func should_hit(dealer_card: int, player_cards: Array[int]) -> bool:
+func should_hit(dealer_card: int, player_cards: Array) -> bool:
 	return true
 
-func sum(player_cards: Array[int]) -> int:
+static func sum(player_cards: Array) -> int:
 	var aces_count := 0
 	var sum := 0
 	for card in player_cards:

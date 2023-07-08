@@ -2,16 +2,18 @@ extends Node2D
 
 # Represents the dealer's current hand
 
-var card_scene = load("res://card.tscn")
+@onready var card_scene = preload("res://card.tscn")
 signal deal_button_pressed(id)
 signal clear_button_pressed(id)
 
-var offset = Vector2(60, 0)
-var card_pos = Vector2.ZERO
+@onready var offset = Vector2(60, 0)
+@onready var card_pos = Vector2.ZERO
+@onready var cards = $Cards
+@onready var card_value_label = $CardValue
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	update_label()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -25,15 +27,23 @@ func add_card(card_value):
 	card.position = card_pos
 	card_pos += offset
 	# TODO offset the card's position
-	$Cards.add_child(card)
+	cards.add_child(card)
+	update_label()
 
 func clear_cards():
 	var card_values = []
-	for card in $Cards.get_children():
+	for card in cards.get_children():
 		card_values.append(card.value)
 		card.queue_free()
 	card_pos = Vector2.ZERO
+	card_value_label.text = "0"
 	return card_values
+
+func update_label():
+	card_value_label.text = str(HitStrategy.sum(get_card_values()))
+
+func get_card_values() -> Array:
+	return cards.get_children().map(func(child): return child.get_int_value())
 
 func _on_deal_button_pressed():
 	deal_button_pressed.emit(get_index())

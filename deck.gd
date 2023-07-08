@@ -34,7 +34,7 @@ func add_cards(cards):
 	set_shoe_height()
 
 func create_deck():
-	var suit = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
+	var suit = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 	var deck = dupe_array(suit, 4)
 	var decks = dupe_array(deck, NUM_DECKS)
 	decks.shuffle()

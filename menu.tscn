@@ -58,4 +58,81 @@ text = "Blackjack
 rules"
 autowrap_mode = 2
 
+[node name="NoticeButton" type="Button" parent="Notice"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 232.0
+
+[node name="RulesPopover" type="ColorRect" parent="."]
+visible = false
+offset_left = 200.0
+offset_top = 72.0
+offset_right = 1728.0
+offset_bottom = 1080.0
+color = Color(0.909804, 0.870588, 0.709804, 1)
+
+[node name="CasinoLogo" type="Label" parent="RulesPopover"]
+layout_mode = 0
+offset_left = 1016.0
+offset_right = 1465.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "Dragon's Den"
+horizontal_alignment = 2
+
+[node name="Subtitle" type="Label" parent="RulesPopover"]
+layout_mode = 0
+offset_left = 1184.0
+offset_top = 80.0
+offset_right = 1460.0
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Casino & Resort"
+
+[node name="Title" type="Label" parent="RulesPopover"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 747.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 84
+text = "Rules of Blackjack"
+
+[node name="Label" type="Label" parent="RulesPopover"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 144.0
+offset_right = 1488.0
+offset_bottom = 1008.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "1. Upon player placing bet, dealer must draw the player two cards.
+2. Aces count for 1 or 11. Court cards count as 10.
+3. Players may \"hit\" to be dealt an additional card or \"stay\" to keep their current hand.
+4. Dealer must deal on 16 and stay on 17.
+5. More rules to follow yada yada.
+
+FAILURE TO COMPLY WITH THESE RULES MAY RESULT IN TERMINATION"
+
+[node name="CloseButton" type="Button" parent="RulesPopover"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -152.0
+offset_right = 87.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Close"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Notice/NoticeButton" to="." method="_on_notice_button_pressed"]
+[connection signal="pressed" from="RulesPopover/CloseButton" to="." method="_on_close_button_pressed"]

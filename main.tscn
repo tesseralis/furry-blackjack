@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://main.gd" id="1_odqno"]
 [ext_resource type="PackedScene" uid="uid://ch7rhvxkvjegs" path="res://deck.tscn" id="4_aa6yx"]
 [ext_resource type="Texture2D" uid="uid://bpfgbamhgmubh" path="res://Art/chip-tray.png" id="5_ib347"]
-[ext_resource type="PackedScene" uid="uid://kq21ncwu4jcf" path="res://player.tscn" id="6_1eg7b"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="6_1eg7b"]
 [ext_resource type="PackedScene" uid="uid://col58ifbqrbi7" path="res://dealer_hand.tscn" id="6_kk2u2"]
-[ext_resource type="Resource" uid="uid://bcoqmty4tggjc" path="res://Resources/Strategies/naive_hit_strategy.tres" id="7_1qoqd"]
+[ext_resource type="Resource" uid="uid://bvedignsc8uge" path="res://Resources/Strategies/naive_hit_strategy.tres" id="7_1qoqd"]
 [ext_resource type="Resource" uid="uid://cbhi2dnxr0qun" path="res://Resources/Strategies/optimal_hit_strategy.tres" id="7_q7ogb"]
 
 [node name="Main" type="Node2D"]

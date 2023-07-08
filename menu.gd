@@ -14,3 +14,11 @@ func _process(delta):
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://main.tscn")
 
+
+
+func _on_notice_button_pressed():
+	$RulesPopover.visible = true
+
+
+func _on_close_button_pressed():
+	$RulesPopover.visible = false

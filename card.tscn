@@ -7,9 +7,9 @@ script = ExtResource("1_jt26q")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_left = -24.0
-offset_top = -40.0
+offset_top = -32.0
 offset_right = 24.0
-offset_bottom = 40.0
+offset_bottom = 32.0
 color = Color(1, 0.976471, 0.941176, 1)
 
 [node name="Text" type="Label" parent="."]

@@ -11,58 +11,58 @@ offset_bottom = 648.0
 color = Color(0.603922, 0.627451, 0.678431, 1)
 
 [node name="Guest" type="Sprite2D" parent="."]
-position = Vector2(160, 200)
+position = Vector2(160, 169)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("1_fyf0q")
 
 [node name="Guest2" type="Sprite2D" parent="."]
-position = Vector2(400, 192)
+position = Vector2(400, 168)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("1_fyf0q")
 
 [node name="Guest3" type="Sprite2D" parent="."]
-position = Vector2(744, 192)
+position = Vector2(744, 168)
 scale = Vector2(-0.125, 0.125)
 texture = ExtResource("1_fyf0q")
 
 [node name="Guest4" type="Sprite2D" parent="."]
-position = Vector2(992, 192)
+position = Vector2(992, 168)
 rotation = 3.14159
 scale = Vector2(0.125, -0.125)
 texture = ExtResource("1_fyf0q")
 
 [node name="Table" type="ColorRect" parent="."]
-offset_top = 320.0
+offset_top = 296.0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.388235, 0.619608, 0.321569, 1)
 
 [node name="Card" type="ColorRect" parent="."]
 offset_left = 144.0
-offset_top = 360.0
+offset_top = 328.0
 offset_right = 176.0
-offset_bottom = 408.0
+offset_bottom = 376.0
 color = Color(0.760784, 0.258824, 0.266667, 1)
 
 [node name="Card2" type="ColorRect" parent="."]
 offset_left = 400.0
-offset_top = 360.0
+offset_top = 328.0
 offset_right = 432.0
-offset_bottom = 408.0
+offset_bottom = 376.0
 color = Color(0.760784, 0.258824, 0.266667, 1)
 
 [node name="Card3" type="ColorRect" parent="."]
 offset_left = 720.0
-offset_top = 360.0
+offset_top = 328.0
 offset_right = 752.0
-offset_bottom = 408.0
+offset_bottom = 376.0
 color = Color(0.760784, 0.258824, 0.266667, 1)
 
 [node name="Card4" type="ColorRect" parent="."]
 offset_left = 976.0
-offset_top = 360.0
+offset_top = 328.0
 offset_right = 1008.0
-offset_bottom = 408.0
+offset_bottom = 376.0
 color = Color(0.760784, 0.258824, 0.266667, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

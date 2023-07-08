@@ -7,6 +7,7 @@ extends Node2D
 @onready var cards = $Cards
 signal deal_button_pressed
 signal clear_button_pressed
+signal cards_updated(new_cards: Array)
 
 @onready var offset = Vector2(35, 5)
 @onready var card_pos = Vector2.ZERO 
@@ -14,6 +15,7 @@ signal clear_button_pressed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_label()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,6 +30,7 @@ func add_card(card_value):
 	# TODO offset the card's position
 	cards.add_child(card)
 	update_label()
+	cards_updated.emit(get_card_values())
 	
 
 func clear_cards():
@@ -37,6 +40,7 @@ func clear_cards():
 		card.queue_free()
 	card_pos = Vector2.ZERO
 	card_value_label.text = "0"
+	cards_updated.emit([])
 	return card_values
 
 func update_label():

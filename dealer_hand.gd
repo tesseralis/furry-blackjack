@@ -52,3 +52,7 @@ func _on_deal_button_pressed():
 func _on_clear_button_pressed():
 	clear_button_pressed.emit()
 
+func get_public_card() -> int:
+	if cards.get_children().is_empty():
+		return 0
+	return cards.get_child(0).get_int_value()

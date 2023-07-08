@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var deck = $Deck
 @onready var players = $Players
+@onready var dealer = $DealerHand
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,15 +14,29 @@ func _ready():
 	
 		player.betting_area.add_button_pressed.connect(_on_bet_add_button_pressed.bind(id))
 		player.betting_area.collect_button_pressed.connect(_on_bet_collect_button_pressed.bind(id))
+		
+	dealer.deal_button_pressed.connect(_on_dealer_deal_button_pressed)
+	dealer.clear_button_pressed.connect(_on_dealer_clear_button_pressed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func _on_dealer_deal_button_pressed():
+	var card_value = $Deck.take_card()
+	dealer.add_card(card_value)
+	for player in players.get_children():
+		player.set_dealer_card(dealer.get_public_card())
+	
+	
+func _on_dealer_clear_button_pressed():
+	dealer.clear_cards()
+	for player in players.get_children():
+		player.set_dealer_card(dealer.get_public_card())
+
 
 func _on_deal_button_pressed(id):
 	var card_value = $Deck.take_card()
-	print(id)
 	players.get_child(id).stack.add_card(card_value)
 
 

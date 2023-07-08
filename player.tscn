@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://kq21ncwu4jcf"]
+[gd_scene load_steps=7 format=3 uid="uid://kq21ncwu4jcf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_6w1sd"]
 [ext_resource type="PackedScene" uid="uid://bdsqfwh1asx8p" path="res://stack.tscn" id="1_hum8s"]
 [ext_resource type="PackedScene" uid="uid://isd5tt1p5qrb" path="res://betting_area.tscn" id="2_y3nuf"]
+[ext_resource type="Texture2D" uid="uid://bxh0ui5auimmn" path="res://Art/dog.png" id="4_qqvh7"]
+[ext_resource type="Script" path="res://ChatBubble.gd" id="5_4aio1"]
+[ext_resource type="Texture2D" uid="uid://dxe8fd14wx0yi" path="res://icon.svg" id="5_iuxaq"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_6w1sd")
@@ -11,3 +14,32 @@ script = ExtResource("1_6w1sd")
 position = Vector2(-1, 126)
 
 [node name="BettingArea" parent="." instance=ExtResource("2_y3nuf")]
+
+[node name="SpriteReference" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2, -251)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_qqvh7")
+
+[node name="ChatBubble" type="Node2D" parent="."]
+position = Vector2(-192, -373)
+script = ExtResource("5_4aio1")
+
+[node name="Background" type="Sprite2D" parent="ChatBubble"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(3, -1)
+texture = ExtResource("5_iuxaq")
+metadata/_edit_group_ = true
+
+[node name="Text" type="Label" parent="ChatBubble"]
+visible = false
+offset_left = -46.0
+offset_top = -41.0
+offset_right = 50.0
+offset_bottom = 34.0
+text = "hit me"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_group_ = true

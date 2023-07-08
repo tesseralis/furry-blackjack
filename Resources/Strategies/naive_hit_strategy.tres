@@ -1,7 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bcoqmty4tggjc"]
 
 [ext_resource type="Script" path="res://Resources/Strategies/NaiveHitStrategy.gd" id="1_ltidu"]
 
 [resource]
 script = ExtResource("1_ltidu")
-naive_limit = 0
+naive_limit = 15

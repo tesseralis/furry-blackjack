@@ -5,6 +5,7 @@ extends Node2D
 @onready var chat_bubble = $ChatBubble
 @onready var player_arm = $AnimatedSprite2D
 @export var strategy: HitStrategy
+var dealer_hand
 
 @onready var dealer_card: int = 0
 var activated = false
@@ -56,5 +57,13 @@ func _on_hand_start():
 		chat_bubble.show_text("Deal me in!")
 	
 func _on_hand_end():
+	var player_value = HitStrategy.sum(stack.get_card_values())
+	var dealer_value = HitStrategy.sum(dealer_hand.get_card_values())
 	# TODO take chips if won
-	pass
+	if player_value <= 21:
+		if dealer_value > 21 or player_value > dealer_value:
+			chat_bubble.show_text("I won!")
+		elif dealer_value > player_value:
+			chat_bubble.show_text("Rats...")
+		else:
+			chat_bubble.show_text("It's a draw...")

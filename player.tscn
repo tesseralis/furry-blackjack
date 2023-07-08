@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://kq21ncwu4jcf"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_6w1sd"]
+[ext_resource type="PackedScene" uid="uid://bdsqfwh1asx8p" path="res://stack.tscn" id="1_hum8s"]
+[ext_resource type="PackedScene" uid="uid://isd5tt1p5qrb" path="res://betting_area.tscn" id="2_y3nuf"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_6w1sd")
+
+[node name="Stack" parent="." instance=ExtResource("1_hum8s")]
+position = Vector2(-1, 126)
+
+[node name="BettingArea" parent="." instance=ExtResource("2_y3nuf")]

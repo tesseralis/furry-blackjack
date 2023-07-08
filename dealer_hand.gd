@@ -3,8 +3,8 @@ extends Node2D
 # Represents the dealer's current hand
 
 @onready var card_scene = preload("res://card.tscn")
-signal deal_button_pressed(id)
-signal clear_button_pressed(id)
+signal deal_button_pressed
+signal clear_button_pressed
 
 @onready var offset = Vector2(60, 0)
 @onready var card_pos = Vector2.ZERO
@@ -46,9 +46,9 @@ func get_card_values() -> Array:
 	return cards.get_children().map(func(child): return child.get_int_value())
 
 func _on_deal_button_pressed():
-	deal_button_pressed.emit(get_index())
+	deal_button_pressed.emit()
 
 
 func _on_clear_button_pressed():
-	clear_button_pressed.emit(get_index())
+	clear_button_pressed.emit()
 

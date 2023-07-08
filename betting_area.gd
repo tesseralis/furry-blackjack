@@ -3,8 +3,8 @@ extends Node2D
 # TODO later, have different color chips of different values?
 var chip_scene = load("res://chip.tscn")
 
-signal add_button_pressed(id)
-signal collect_button_pressed(id)
+signal add_button_pressed
+signal collect_button_pressed
 
 var offset = Vector2(0, -10)
 var chip_pos = Vector2.ZERO
@@ -37,9 +37,9 @@ func clear_chips():
 
 
 func _on_add_button_pressed():
-	add_button_pressed.emit(get_index())
+	add_button_pressed.emit()
 
 
 func _on_collect_button_pressed():
-	collect_button_pressed.emit(get_index())
+	collect_button_pressed.emit()
 

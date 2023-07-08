@@ -35,8 +35,8 @@ func add_cards(cards):
 
 func create_deck():
 	var suit = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-	var deck = dupe_array(suit, 4)
-	var decks = dupe_array(deck, NUM_DECKS)
+	var dupe_deck = dupe_array(suit, 4)
+	var decks = dupe_array(dupe_deck, NUM_DECKS)
 	decks.shuffle()
 	return decks
 

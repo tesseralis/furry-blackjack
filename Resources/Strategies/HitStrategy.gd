@@ -6,15 +6,15 @@ func should_hit(dealer_card: int, player_cards: Array) -> bool:
 
 static func sum(player_cards: Array) -> int:
 	var aces_count := 0
-	var sum := 0
+	var card_sum := 0
 	for card in player_cards:
 		if card == 1:
 			aces_count += 1
-			sum += 10
-		sum += card
+			card_sum += 10
+		card_sum += card
 		
-	while sum > 21 and aces_count > 0:
-		sum -= 10
+	while card_sum > 21 and aces_count > 0:
+		card_sum -= 10
 		aces_count -= 1
 		
-	return sum
+	return card_sum

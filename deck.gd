@@ -3,7 +3,7 @@ extends Node2D
 # Represents the current deck of cards
 
 var deck = []
-var DECK_HEIGHT = 120
+var CARD_HEIGHT = 1
 var NUM_DECKS = 6
 var FULL_DECK_COUNT = 52 * NUM_DECKS
 
@@ -20,8 +20,8 @@ func init_deck():
 	set_shoe_height()
 	
 func set_shoe_height():
-	var height = DECK_HEIGHT * deck.size() / FULL_DECK_COUNT
-	$Shoe.set_size(Vector2(32, height))
+	var height = CARD_HEIGHT * deck.size()
+	$Shoe.set_size(Vector2(80, height))
 
 # deal the next card in the deck
 func take_card():

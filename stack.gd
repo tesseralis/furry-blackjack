@@ -8,7 +8,6 @@ signal clear_button_pressed(id)
 
 var offset = Vector2(10, 50)
 var card_pos = Vector2.ZERO
-var id = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,9 +35,9 @@ func clear_cards():
 	return card_values
 
 func _on_deal_button_pressed():
-	deal_button_pressed.emit(id)
+	deal_button_pressed.emit(get_index())
 
 
 func _on_clear_button_pressed():
-	clear_button_pressed.emit(id)
+	clear_button_pressed.emit(get_index())
 

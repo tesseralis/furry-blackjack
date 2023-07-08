@@ -42,8 +42,8 @@ offset_bottom = 1088.0
 color = Color(0.388235, 0.619608, 0.321569, 1)
 
 [node name="ChipTray" type="Sprite2D" parent="."]
-position = Vector2(957, 923)
-scale = Vector2(0.2, 0.2)
+position = Vector2(948, 972)
+scale = Vector2(0.269043, 0.181152)
 texture = ExtResource("5_ib347")
 
 [node name="Stacks" type="Node2D" parent="."]

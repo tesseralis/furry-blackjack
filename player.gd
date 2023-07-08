@@ -15,13 +15,19 @@ func _ready():
 func _on_cards_updated(cards: Array):
 	if cards.size() < 2:
 		chat_bubble.show_text("Deal me in!")
+	elif HitStrategy.sum(cards) > 21:
+		chat_bubble.show_text("Aw rats!")
+
 	elif dealer_card == 0:
 		chat_bubble.show_text("Deal yourself in!")
 	else:
 		if strategy.should_hit(dealer_card, cards):
 			chat_bubble.show_text("Hit me!")
 		else:
-			chat_bubble.show_text("I'm staying")
+			if cards.size() == 2 && HitStrategy.sum(cards) == 21:
+				chat_bubble.show_text("Blackjack!")
+			else:
+				chat_bubble.show_text("I'm staying")
 
 func set_dealer_card(value: int):
 	dealer_card = value

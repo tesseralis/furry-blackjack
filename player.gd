@@ -51,8 +51,8 @@ func activate():
 	stack.visible = true
 	betting_area.activate()
 
-func leave():
-	chat_bubble.show_text("I'm outta here...")
+func leave(msg = "I'm outta here..."):
+	chat_bubble.show_text(msg)
 	await get_tree().create_timer(2.0).timeout
 	activated = false
 	chat_bubble.visible = false
@@ -74,7 +74,6 @@ func _on_hand_start():
 func _on_hand_end():
 	var player_value = HitStrategy.sum(stack.get_card_values())
 	var dealer_value = HitStrategy.sum(dealer_hand.get_card_values())
-	# TODO take chips if won
 	if player_value <= 21:
 		if dealer_value > 21 or player_value > dealer_value:
 			chat_bubble.show_text("I won!")
@@ -86,8 +85,9 @@ func _on_hand_end():
 			chips += betting_area.clear_chips()
 
 	if chips <= 0:
-		leave()
-
+		leave("Ran out of money...")
+	if chips > 20:
+		leave("That's enough winning for me!")
 
 func _on_betting_area_add_button_pressed():
 	if awaiting_payout and betting_area.get_amount() >= 2 * current_bet:

@@ -27,6 +27,7 @@ func _ready():
 	
 		player.betting_area.add_button_pressed.connect(_on_bet_add_button_pressed.bind(id))
 		player.betting_area.collect_button_pressed.connect(_on_bet_collect_button_pressed.bind(id))
+		player.player_left.connect(_on_player_left.bind(id))
 		player.dealer_hand = $DealerHand
 	dealer.deal_button_pressed.connect(_on_dealer_deal_button_pressed)
 	dealer.clear_button_pressed.connect(_on_dealer_clear_button_pressed)
@@ -71,13 +72,18 @@ func _on_bet_collect_button_pressed(id):
 	# TODO keep track of dealer's chips?
 	players.get_child(id).betting_area.clear_chips()
 
+func _on_player_left(id):
+	$PlayerSprites.get_child(id).visible = false
+
 func activate_random_player():
 	# choose an unactivated seat
 	var unactivated = range(4).filter(func(id): return id not in active_seats)
 	var chosen_id = unactivated.pick_random()
 	# activate the sprite and controller for that player
 	$PlayerSprites.get_child(chosen_id).visible = true
-	players.get_child(chosen_id).activate()
+	var player = players.get_child(chosen_id)
+	player.activate()
+	player.chips = range(8, 15).pick_random()
 	
 func deal_card() -> String:
 	if(deck.is_empty()):

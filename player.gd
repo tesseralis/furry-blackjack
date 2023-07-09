@@ -7,9 +7,12 @@ extends Node2D
 var dealer_hand
 
 @onready var dealer_card: int = 0
+var chips: int = 0
 var activated = false
 var current_bet = 0
 var awaiting_payout = false
+
+signal player_left
 
 func _ready():
 	stack.cards_updated.connect(_on_cards_updated)
@@ -46,20 +49,24 @@ func activate():
 	betting_area.activate()
 
 func leave():
+	chat_bubble.show_text("I'm outta here...")
+	await get_tree().create_timer(2.0).timeout
 	activated = false
 	chat_bubble.visible = false
 	stack.visible = false
+	player_left.emit(get_index())
 	betting_area.deactivate()
 
 func _on_hand_start():
 	if awaiting_payout:
 		# TODO get angry you haven't been paid
 		awaiting_payout = false
-		chat_bubble.show_text("What's the big idea!")
+		chat_bubble.show_text("What's the big idea?")
 	if activated:
 		chat_bubble.show_text("Deal me in!")
-		current_bet = range(1, 4).pick_random()
+		current_bet = min(range(1, 4).pick_random(), chips)
 		betting_area.add_chips(current_bet)
+		chips -= current_bet
 	
 func _on_hand_end():
 	var player_value = HitStrategy.sum(stack.get_card_values())
@@ -74,9 +81,12 @@ func _on_hand_end():
 		else:
 			chat_bubble.show_text("It's a draw...")
 
+	if chips <= 0:
+		leave()
+
 
 func _on_betting_area_add_button_pressed():
 	if awaiting_payout and betting_area.get_amount() >= 2 * current_bet:
-		betting_area.clear_chips()
+		chips += betting_area.clear_chips()
 		awaiting_payout = false
 

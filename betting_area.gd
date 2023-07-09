@@ -45,7 +45,8 @@ func activate():
 
 func deactivate():
 	$GUI.visible = false
-	# TODO clear chips
+	for chip in $Chips.get_children():
+		chip.queue_free()
 
 func _on_add_button_pressed():
 	add_button_pressed.emit()

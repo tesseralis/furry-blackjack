@@ -1,122 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://da0ajn2ba8glx"]
+[gd_scene load_steps=6 format=3 uid="uid://da0ajn2ba8glx"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_dtuss"]
+[ext_resource type="Texture2D" uid="uid://7bdgrjkxulel" path="res://Art/background.png" id="2_7cgsm"]
 [ext_resource type="AudioStream" uid="uid://bk86pfyqa80y7" path="res://Resources/Audio/Pluto_Bloodhound_Master.ogg" id="2_mcfma"]
+[ext_resource type="Texture2D" uid="uid://d2fnwsav1ucd8" path="res://Art/blackjack_rules.png" id="3_gagfi"]
+[ext_resource type="Texture2D" uid="uid://cawvvrl1grbf6" path="res://Art/break_room_foreground.png" id="5_4mkvf"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_dtuss")
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.560784, 0.6, 0.65098, 1)
-
-[node name="Door" type="ColorRect" parent="."]
-offset_left = 1344.0
-offset_top = 200.0
-offset_right = 1792.0
-offset_bottom = 1080.0
-color = Color(0.521569, 0.462745, 0.435294, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_7cgsm")
 
 [node name="StartButton" type="Button" parent="."]
 offset_left = 1408.0
-offset_top = 320.0
-offset_right = 1725.0
-offset_bottom = 416.0
+offset_top = 292.0
+offset_right = 1745.0
+offset_bottom = 388.0
 theme_override_font_sizes/font_size = 64
-text = "Start Shift"
-
-[node name="Board" type="ColorRect" parent="."]
-offset_left = 256.0
-offset_top = 256.0
-offset_right = 1216.0
-offset_bottom = 768.0
-color = Color(0.521569, 0.435294, 0.364706, 1)
 
 [node name="Title" type="Label" parent="."]
-offset_left = 128.0
-offset_top = 760.0
-offset_right = 1008.0
-offset_bottom = 1116.0
+offset_left = 28.0
+offset_top = 762.0
+offset_right = 1225.0
+offset_bottom = 1118.0
+theme_override_colors/font_color = Color(0.172549, 0, 0.054902, 1)
 theme_override_constants/line_spacing = -40
 theme_override_font_sizes/font_size = 128
-text = "The House Always Wins"
+text = "The Dragon's Keep ( all your money)"
 autowrap_mode = 2
 
-[node name="Notice" type="ColorRect" parent="."]
-offset_left = 632.0
-offset_top = 392.0
-offset_right = 800.0
-offset_bottom = 624.0
+[node name="NoticeButton" type="Button" parent="."]
+modulate = Color(1, 1, 0.419608, 0.588235)
+offset_left = 608.0
+offset_top = 364.0
+offset_right = 776.0
+offset_bottom = 596.0
 
-[node name="Label" type="Label" parent="Notice"]
-layout_mode = 0
-offset_right = 168.0
-offset_bottom = 96.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "Blackjack
-rules"
-autowrap_mode = 2
-
-[node name="NoticeButton" type="Button" parent="Notice"]
-layout_mode = 0
-offset_right = 168.0
-offset_bottom = 232.0
-
-[node name="RulesPopover" type="ColorRect" parent="."]
+[node name="RulesPopover" type="Control" parent="."]
 visible = false
+layout_mode = 3
+anchors_preset = 0
 offset_left = 200.0
 offset_top = 72.0
 offset_right = 1728.0
 offset_bottom = 1080.0
-color = Color(0.909804, 0.870588, 0.709804, 1)
-
-[node name="CasinoLogo" type="Label" parent="RulesPopover"]
-layout_mode = 0
-offset_left = 1016.0
-offset_right = 1465.0
-offset_bottom = 96.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
-text = "Dragon's Den"
-horizontal_alignment = 2
-
-[node name="Subtitle" type="Label" parent="RulesPopover"]
-layout_mode = 0
-offset_left = 1184.0
-offset_top = 80.0
-offset_right = 1460.0
-offset_bottom = 133.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-text = "Casino & Resort"
-
-[node name="Title" type="Label" parent="RulesPopover"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 747.0
-offset_bottom = 126.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 84
-text = "Rules of Blackjack"
-
-[node name="Label" type="Label" parent="RulesPopover"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 144.0
-offset_right = 1488.0
-offset_bottom = 1008.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "1. Upon player placing bet, dealer must draw the player two cards.
-2. Aces count for 1 or 11. Court cards count as 10.
-3. Players may \"hit\" to be dealt an additional card or \"stay\" to keep their current hand.
-4. Dealer must deal on 16 and stay on 17.
-5. More rules to follow yada yada.
-
-FAILURE TO COMPLY WITH THESE RULES MAY RESULT IN TERMINATION"
 
 [node name="CloseButton" type="Button" parent="RulesPopover"]
 layout_mode = 1
@@ -134,12 +63,20 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "Close"
 
+[node name="Sprite2D" type="Sprite2D" parent="RulesPopover"]
+position = Vector2(298, 486)
+texture = ExtResource("3_gagfi")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_mcfma")
 volume_db = -12.18
 autoplay = true
 bus = &"music"
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 542)
+texture = ExtResource("5_4mkvf")
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Notice/NoticeButton" to="." method="_on_notice_button_pressed"]
+[connection signal="pressed" from="NoticeButton" to="." method="_on_notice_button_pressed"]
 [connection signal="pressed" from="RulesPopover/CloseButton" to="." method="_on_close_button_pressed"]

@@ -14,12 +14,45 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n0mly"]
 animations = [{
-"frames": [null, ExtResource("7_vn381"), ExtResource("7_vn381"), ExtResource("8_8jo1t"), ExtResource("7_vn381"), ExtResource("7_vn381"), null],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_vn381")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vn381")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8jo1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vn381")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vn381")
+}],
 "loop": false,
 "name": &"hit",
 "speed": 5.0
 }, {
-"frames": [null, ExtResource("9_bheop"), ExtResource("9_bheop"), ExtResource("10_creyk"), ExtResource("11_4efk4"), ExtResource("11_4efk4"), ExtResource("10_creyk"), null],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_bheop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bheop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_creyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4efk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4efk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_creyk")
+}],
 "loop": false,
 "name": &"stand",
 "speed": 5.0
@@ -64,10 +97,11 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_group_ = true
 
-[node name="guest3hand" type="AnimatedSprite2D" parent="."]
+[node name="PlayerArm" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(69, -52)
 scale = Vector2(0.473274, 0.452953)
-frames = SubResource("SpriteFrames_n0mly")
+sprite_frames = SubResource("SpriteFrames_n0mly")
 animation = &"hit"
 frame = 4
 

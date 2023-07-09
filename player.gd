@@ -3,7 +3,7 @@ extends Node2D
 @onready var stack = $Stack
 @onready var betting_area = $BettingArea
 @onready var chat_bubble = $ChatBubble
-@onready var player_arm = $AnimatedSprite2D
+@onready var player_arm = $PlayerArm
 @export var strategy: HitStrategy
 var dealer_hand
 
@@ -66,6 +66,7 @@ func activate():
 	activated = true
 	chat_bubble.visible = true
 	stack.visible = true
+	player_arm.visible = true
 	betting_area.activate()
 
 func leave(msg = "I'm outta here..."):
@@ -74,6 +75,7 @@ func leave(msg = "I'm outta here..."):
 	activated = false
 	chat_bubble.visible = false
 	stack.visible = false
+	player_arm.visible = false
 	player_left.emit()
 	betting_area.deactivate()
 

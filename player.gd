@@ -52,6 +52,7 @@ func _on_cards_updated(cards: Array):
 				player_arm.play("stand")
 
 
+
 func set_dealer_card(value: int):
 	dealer_card = value
 	_on_cards_updated(stack.get_card_values())

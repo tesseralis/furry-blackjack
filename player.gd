@@ -12,6 +12,7 @@ var chips: int = 0
 var activated = false
 var current_bet = 0
 var awaiting_payout = false
+var awaiting_collection = false
 var anger = 0
 var expect_deal = false
 
@@ -38,6 +39,7 @@ func _on_cards_updated(cards: Array):
 	elif HitStrategy.sum(cards) > 21:
 		chat_bubble.show_text("Aw rats!")
 		expect_deal = false
+		awaiting_collection = true
 
 	elif dealer_card == 0:
 		chat_bubble.show_text("Deal yourself in!")
@@ -63,6 +65,7 @@ func set_dealer_card(value: int):
 		_on_cards_updated(stack.get_card_values())
 
 func activate():
+	anger = 0
 	activated = true
 	chat_bubble.visible = true
 	stack.visible = true
@@ -93,6 +96,7 @@ func clear_chips()-> int:
 
 func _on_hand_start():
 	collect_chips()
+	awaiting_collection = false
 	if awaiting_payout:
 		awaiting_payout = false
 		GlobalEvents.rule_broken.emit()
@@ -118,6 +122,7 @@ func _on_hand_end():
 			awaiting_payout = true
 		elif dealer_value > player_value:
 			chat_bubble.show_text("Rats...")
+			awaiting_collection = true
 		else:
 			chat_bubble.show_text("It's a draw...")
 			collect_chips()
@@ -137,3 +142,12 @@ func _on_betting_area_add_button_pressed():
 func _on_rule_broken():
 	chat_bubble.show_text("What's the big idea?")
 	increment_anger()
+
+
+func _on_betting_area_collect_button_pressed():
+	if not awaiting_collection:
+		chat_bubble.show_text("Hey that's my money!")
+		GlobalEvents.rule_broken.emit()
+	awaiting_collection = false
+	# TODO complain if money taken when not lost
+	pass # Replace with function body.

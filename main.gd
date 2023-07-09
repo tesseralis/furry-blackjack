@@ -7,6 +7,8 @@ extends Node2D
 @onready var end_hand_button: Button = $EndHandButton
 @onready var new_hand_button: Button = $NewHandButton
 
+var MAX_PLAYERS = 4
+
 enum State {
 	CARD_PHASE,
 	COLLECTION_PHASE
@@ -84,6 +86,8 @@ func _on_player_left(complaint, id):
 			end_game("Too many customers complained...")
 
 func activate_random_player():
+	if active_seats.size() >= MAX_PLAYERS:
+		pass
 	# choose an unactivated seat
 	var unactivated = range(4).filter(func(id): return id not in active_seats)
 	var chosen_id = unactivated.pick_random()

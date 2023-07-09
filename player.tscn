@@ -106,3 +106,4 @@ animation = &"hit"
 frame = 4
 
 [connection signal="add_button_pressed" from="BettingArea" to="." method="_on_betting_area_add_button_pressed"]
+[connection signal="collect_button_pressed" from="BettingArea" to="." method="_on_betting_area_collect_button_pressed"]

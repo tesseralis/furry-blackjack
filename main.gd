@@ -16,9 +16,11 @@ enum State {
 
 # List of indices of seats with active players
 var active_seats = []
+var chips = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_chips(50)
 	deck.init_deck()
 	for player in players.get_children():
 		var id = player.get_index()
@@ -67,10 +69,12 @@ func _on_clear_button_pressed(id):
 	
 func _on_bet_add_button_pressed(id):
 	players.get_child(id).betting_area.add_chips(1)
+	set_chips(chips - 1)
 	
 func _on_bet_collect_button_pressed(id):
 	# TODO keep track of dealer's chips?
-	players.get_child(id).betting_area.clear_chips()
+	var amount = players.get_child(id).betting_area.clear_chips()
+	set_chips(chips + amount)
 
 func _on_player_left(id):
 	$PlayerSprites.get_child(id).visible = false
@@ -85,6 +89,11 @@ func activate_random_player():
 	player.chips = range(8, 15).pick_random()
 	player.activate()
 
+func set_chips(amount):
+	chips = amount
+	$BankLabel.text = "Bank: $" + str(amount * 50)
+	if chips <= 0:
+		end_game("You lost all the casino's money...")
 	
 func deal_card() -> String:
 	if(deck.is_empty()):
@@ -104,6 +113,10 @@ func end_hand():
 	new_hand_button.disabled = false
 	GlobalEvents.hand_end.emit()
 
+func end_game(label):
+	$GameOverScreen.visible = true
+	$GameOverScreen/Background/Description.text = label
+
 func _end_hand_button_pressed():
 	end_hand()
 	
@@ -114,4 +127,9 @@ func _new_hand_button_pressed():
 
 func _on_player_timer_timeout():
 	activate_random_player()
+
+
+
+func _on_return_button_pressed():
+	get_tree().change_scene_to_file("res://menu.tscn")
 

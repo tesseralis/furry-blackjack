@@ -82,8 +82,9 @@ func activate_random_player():
 	# activate the sprite and controller for that player
 	$PlayerSprites.get_child(chosen_id).visible = true
 	var player = players.get_child(chosen_id)
-	player.activate()
 	player.chips = range(8, 15).pick_random()
+	player.activate()
+
 	
 func deal_card() -> String:
 	if(deck.is_empty()):

@@ -68,7 +68,7 @@ func leave(msg = "I'm outta here..."):
 	activated = false
 	chat_bubble.visible = false
 	stack.visible = false
-	player_left.emit(get_index())
+	player_left.emit()
 	betting_area.deactivate()
 
 func increment_anger(amount = 1):
@@ -115,7 +115,9 @@ func _on_hand_end():
 		leave("That's enough winning for me!")
 
 func _on_betting_area_add_button_pressed():
-	if awaiting_payout and betting_area.get_amount() >= 2 * current_bet:
+	if not awaiting_payout:
+		chat_bubble.show_text("Oh thank you!")
+	elif awaiting_payout and betting_area.get_amount() >= 2 * current_bet:
 		collect_chips()
 		awaiting_payout = false
 

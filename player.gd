@@ -20,20 +20,23 @@ func _ready():
 	stack.cards_updated.connect(_on_cards_updated)
 	GlobalEvents.hand_start.connect(_on_hand_start)
 	GlobalEvents.hand_end.connect(_on_hand_end)
+	GlobalEvents.rule_broken.connect(_on_rule_broken)
 
 func _on_cards_updated(cards: Array):
-		
 	if not activated:
 		return
-	if cards.size() > 0 and not expect_deal:
+	if current_bet == 0 or awaiting_payout:
+		return
+	if cards.size() > 2 and not expect_deal:
 		chat_bubble.show_text("I didn't ask for this!")
-		increment_anger()
+		GlobalEvents.rule_broken.emit()
 		return
 	if cards.size() < 2:
 		chat_bubble.show_text("Deal me in!")
 		expect_deal = true
 	elif HitStrategy.sum(cards) > 21:
 		chat_bubble.show_text("Aw rats!")
+		expect_deal = false
 
 	elif dealer_card == 0:
 		chat_bubble.show_text("Deal yourself in!")
@@ -50,8 +53,10 @@ func _on_cards_updated(cards: Array):
 
 
 func set_dealer_card(value: int):
+	var old_value = dealer_card
 	dealer_card = value
-	_on_cards_updated(stack.get_card_values())
+	if old_value == 0:
+		_on_cards_updated(stack.get_card_values())
 
 func activate():
 	activated = true
@@ -75,12 +80,16 @@ func increment_anger(amount = 1):
 
 func collect_chips():
 	chips += betting_area.clear_chips()
+	
+func clear_chips()-> int:
+	current_bet = 0 
+	return betting_area.clear_chips()
 
 func _on_hand_start():
+	collect_chips()
 	if awaiting_payout:
 		awaiting_payout = false
-		chat_bubble.show_text("What's the big idea?")
-		increment_anger()
+		GlobalEvents.rule_broken.emit()
 	if activated:
 		chat_bubble.show_text("Deal me in!")
 		expect_deal = true
@@ -89,12 +98,13 @@ func _on_hand_start():
 		chips -= current_bet
 	
 func _on_hand_end():
+	if !activated or current_bet == 0:
+		return
 	var player_value = HitStrategy.sum(stack.get_card_values())
 	var dealer_value = HitStrategy.sum(dealer_hand.get_card_values())
 	if expect_deal:
 		chat_bubble.show_text("I wanted a card.")
-		increment_anger()
-		collect_chips()
+		GlobalEvents.rule_broken.emit()
 
 	if player_value <= 21:
 		if dealer_value > 21 or player_value > dealer_value:
@@ -118,3 +128,6 @@ func _on_betting_area_add_button_pressed():
 		collect_chips()
 		awaiting_payout = false
 
+func _on_rule_broken():
+	chat_bubble.show_text("What's the big idea?")
+	increment_anger()

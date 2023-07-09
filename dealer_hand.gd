@@ -37,6 +37,8 @@ func clear_cards():
 		card.queue_free()
 	card_pos = Vector2.ZERO
 	card_value_label.text = "0"
+	if card_values.size() < 2:
+		GlobalEvents.rule_broken.emit()
 	return card_values
 
 func update_label():

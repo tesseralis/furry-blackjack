@@ -72,8 +72,7 @@ func _on_bet_add_button_pressed(id):
 	set_chips(chips - 1)
 	
 func _on_bet_collect_button_pressed(id):
-	# TODO keep track of dealer's chips?
-	var amount = players.get_child(id).betting_area.clear_chips()
+	var amount = players.get_child(id).clear_chips()
 	set_chips(chips + amount)
 
 func _on_player_left(id):

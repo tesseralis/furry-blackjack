@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bxh0ui5auimmn" path="res://Art/dog.png" id="1_fyf0q"]
 [ext_resource type="Script" path="res://main.gd" id="1_odqno"]
+[ext_resource type="Texture2D" uid="uid://b1fh2qyxq77gd" path="res://Art/table.png" id="3_aewl4"]
 [ext_resource type="PackedScene" uid="uid://ch7rhvxkvjegs" path="res://deck.tscn" id="4_aa6yx"]
-[ext_resource type="Texture2D" uid="uid://bpfgbamhgmubh" path="res://Art/chip-tray.png" id="5_ib347"]
 [ext_resource type="PackedScene" uid="uid://b3mp64e0scybk" path="res://player.tscn" id="6_1eg7b"]
 [ext_resource type="PackedScene" uid="uid://col58ifbqrbi7" path="res://dealer_hand.tscn" id="6_kk2u2"]
 [ext_resource type="Resource" uid="uid://bcoqmty4tggjc" path="res://Resources/Strategies/naive_hit_strategy.tres" id="7_1qoqd"]
@@ -16,87 +16,81 @@ script = ExtResource("1_odqno")
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1912.0
 offset_bottom = 1088.0
-color = Color(0.603922, 0.627451, 0.678431, 1)
+color = Color(0.25098, 0.235294, 0.223529, 1)
 
 [node name="PlayerSprites" type="Node2D" parent="."]
 
 [node name="Guest" type="Sprite2D" parent="PlayerSprites"]
 visible = false
-position = Vector2(281, 257)
+position = Vector2(299, 492)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_fyf0q")
 
 [node name="Guest2" type="Sprite2D" parent="PlayerSprites"]
 visible = false
-position = Vector2(736, 249)
+position = Vector2(599, 441)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_fyf0q")
 
 [node name="Guest3" type="Sprite2D" parent="PlayerSprites"]
 visible = false
-position = Vector2(1243, 254)
+position = Vector2(1313, 425)
 rotation = -3.14159
 scale = Vector2(0.25, -0.25)
 texture = ExtResource("1_fyf0q")
 
 [node name="Guest4" type="Sprite2D" parent="PlayerSprites"]
 visible = false
-position = Vector2(1708, 256)
+position = Vector2(1592, 506)
 rotation = 3.14159
 scale = Vector2(0.25, -0.25)
 texture = ExtResource("1_fyf0q")
 
-[node name="Table" type="ColorRect" parent="."]
-offset_top = 422.0
-offset_right = 1912.0
-offset_bottom = 1088.0
-color = Color(0.388235, 0.619608, 0.321569, 1)
-
-[node name="ChipTray" type="Sprite2D" parent="."]
-position = Vector2(948, 972)
-scale = Vector2(0.269043, 0.181152)
-texture = ExtResource("5_ib347")
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(952, 395)
+scale = Vector2(1, 1.28519)
+texture = ExtResource("3_aewl4")
 
 [node name="DealerHand" parent="." instance=ExtResource("6_kk2u2")]
-position = Vector2(754, 772)
+position = Vector2(674, 809)
 
 [node name="Deck" parent="." instance=ExtResource("4_aa6yx")]
-position = Vector2(80, 640)
+position = Vector2(80, 896)
 
 [node name="Discard" parent="." instance=ExtResource("4_aa6yx")]
-position = Vector2(1808, 640)
+position = Vector2(1808, 896)
 
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("6_1eg7b")]
-position = Vector2(283, 492)
+position = Vector2(383, 753)
 strategy = ExtResource("7_q7ogb")
 
 [node name="Player2" parent="Players" instance=ExtResource("6_1eg7b")]
-position = Vector2(748, 492)
+position = Vector2(653, 670)
 strategy = ExtResource("7_1qoqd")
 
 [node name="Player3" parent="Players" instance=ExtResource("6_1eg7b")]
-position = Vector2(1250, 494)
+position = Vector2(1248, 670)
 strategy = ExtResource("7_1qoqd")
 
 [node name="Player4" parent="Players" instance=ExtResource("6_1eg7b")]
-position = Vector2(1726, 485)
+position = Vector2(1521, 754)
 strategy = ExtResource("7_1qoqd")
 
 [node name="EndHandButton" type="Button" parent="."]
-offset_left = 1207.0
-offset_top = 711.0
-offset_right = 1301.0
-offset_bottom = 778.0
+offset_left = 1405.0
+offset_top = 889.0
+offset_right = 1499.0
+offset_bottom = 956.0
 disabled = true
 text = "End Hand"
 
 [node name="NewHandButton" type="Button" parent="."]
-offset_left = 1207.0
-offset_top = 788.0
-offset_right = 1301.0
-offset_bottom = 855.0
+offset_left = 1405.0
+offset_top = 966.0
+offset_right = 1499.0
+offset_bottom = 1033.0
 disabled = true
 text = "New Hand"
 
@@ -105,13 +99,15 @@ wait_time = 30.0
 autostart = true
 
 [node name="BankLabel" type="Label" parent="."]
-anchors_preset = -1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 1234.0
-offset_top = 975.0
-offset_right = 1500.0
-offset_bottom = 1066.0
+offset_left = 827.0
+offset_top = 920.0
+offset_right = 1093.0
+offset_bottom = 1011.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64

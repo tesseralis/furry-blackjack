@@ -143,6 +143,8 @@ func _on_rule_broken():
 	chat_bubble.show_text("What's the big idea?")
 	increment_anger()
 
+func flip_arm():
+	$PlayerArm.set_transform($PlayerArm.transform.scaled(Vector2(-1, 1)))
 
 func _on_betting_area_collect_button_pressed():
 	if not awaiting_collection:

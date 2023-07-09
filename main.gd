@@ -27,6 +27,8 @@ func _ready():
 	deck.init_deck()
 	for player in players.get_children():
 		var id = player.get_index()
+		if id < 2:
+			player.flip_arm()
 		player.stack.deal_button_pressed.connect(_on_deal_button_pressed.bind(id))
 		player.stack.clear_button_pressed.connect(_on_clear_button_pressed.bind(id))
 	

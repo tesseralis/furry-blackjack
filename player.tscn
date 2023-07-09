@@ -63,7 +63,7 @@ script = ExtResource("1_6w1sd")
 
 [node name="Stack" parent="." instance=ExtResource("1_hum8s")]
 visible = false
-position = Vector2(-1, 126)
+position = Vector2(-1, -24)
 
 [node name="BettingArea" parent="." instance=ExtResource("2_y3nuf")]
 
@@ -75,7 +75,7 @@ texture = ExtResource("4_qqvh7")
 
 [node name="ChatBubble" type="Node2D" parent="."]
 visible = false
-position = Vector2(-192, -373)
+position = Vector2(1, -516)
 script = ExtResource("5_4aio1")
 
 [node name="Background" type="Sprite2D" parent="ChatBubble"]
@@ -99,7 +99,7 @@ metadata/_edit_group_ = true
 
 [node name="PlayerArm" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(69, -52)
+position = Vector2(117, -52)
 scale = Vector2(0.473274, 0.452953)
 sprite_frames = SubResource("SpriteFrames_n0mly")
 animation = &"hit"

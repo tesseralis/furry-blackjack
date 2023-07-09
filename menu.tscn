@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://da0ajn2ba8glx"]
+[gd_scene load_steps=3 format=3 uid="uid://da0ajn2ba8glx"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_dtuss"]
+[ext_resource type="AudioStream" uid="uid://bk86pfyqa80y7" path="res://Resources/Audio/Pluto_Bloodhound_Master.ogg" id="2_mcfma"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_dtuss")
@@ -132,6 +133,12 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "Close"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mcfma")
+volume_db = -12.18
+autoplay = true
+bus = &"music"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Notice/NoticeButton" to="." method="_on_notice_button_pressed"]

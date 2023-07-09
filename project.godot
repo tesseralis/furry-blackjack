@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="furry-blackjack"
-run/main_scene="res://main.tscn"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,5 +21,8 @@ GlobalEvents="*res://global_events.tscn"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1440
+window/size/viewport_height=810
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+window/stretch/scale=0.75

@@ -3,6 +3,21 @@
 [ext_resource type="Script" path="res://anger_indicator.gd" id="1_uoino"]
 [ext_resource type="Texture2D" uid="uid://dfhksve3kaxix" path="res://Art/Anime_Angry_Engie.png" id="2_fx3ve"]
 
+[sub_resource type="Animation" id="Animation_waolp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureProgressBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
 [sub_resource type="Animation" id="Animation_dy4di"]
 resource_name = "bump"
 length = 0.5
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1.62451, 2.21914),
 "update": 0,
 "values": [Vector2(0.5, 0.5), Vector2(0.537, 0.537), Vector2(0.5, 0.5)]
-}
-
-[sub_resource type="Animation" id="Animation_waolp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureProgressBar:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nb265"]

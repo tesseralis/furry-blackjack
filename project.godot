@@ -13,7 +13,8 @@ config_version=5
 config/name="furry-blackjack"
 run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Art/house_always_wins_icon.png"
+config/windows_native_icon="res://Art/house_always_wins_icon.ico"
 
 [autoload]
 

@@ -103,6 +103,18 @@ text = "New Hand"
 wait_time = 30.0
 autostart = true
 
+[node name="BankLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 1234.0
+offset_top = 975.0
+offset_right = 1500.0
+offset_bottom = 1066.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+
 [node name="GameOverScreen" type="Node2D" parent="."]
 visible = false
 
@@ -138,6 +150,8 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
 
 [node name="ReturnButton" type="Button" parent="GameOverScreen/Background"]
 layout_mode = 1
@@ -156,3 +170,4 @@ theme_override_font_sizes/font_size = 64
 text = "Time to get a new job..."
 
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_player_timer_timeout"]
+[connection signal="pressed" from="GameOverScreen/Background/ReturnButton" to="." method="_on_return_button_pressed"]

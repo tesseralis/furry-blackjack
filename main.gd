@@ -36,6 +36,7 @@ func _ready():
 		player.betting_area.collect_button_pressed.connect(_on_bet_collect_button_pressed.bind(id))
 		player.player_left.connect(_on_player_left.bind(id))
 		player.dealer_hand = $DealerHand
+		player.force_clear.connect(_on_force_clear)
 	dealer.deal_button_pressed.connect(_on_dealer_deal_button_pressed)
 	dealer.clear_button_pressed.connect(_on_dealer_clear_button_pressed)
 	end_hand_button.pressed.connect(_end_hand_button_pressed)
@@ -126,6 +127,10 @@ func end_hand():
 func end_game(label):
 	$GameOverScreen.visible = true
 	$GameOverScreen/Background/Description.text = label
+
+
+func _on_force_clear(cards: Array):
+	discard.add_cards(cards)
 
 func _end_hand_button_pressed():
 	end_hand()

@@ -9,7 +9,6 @@ script = ExtResource("1_tcbgj")
 position = Vector2(0, 8)
 
 [node name="GUI" type="Node2D" parent="."]
-visible = false
 
 [node name="PayoutButton" type="Button" parent="GUI"]
 anchors_preset = 3
@@ -17,10 +16,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -103.0
-offset_top = -40.0
-offset_right = -41.0
-offset_bottom = -9.0
+offset_left = 58.0
+offset_top = -16.0
+offset_right = 120.0
+offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Payout
@@ -30,10 +29,10 @@ text = "Payout
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -100.0
-offset_top = 8.0
-offset_right = -39.0
-offset_bottom = 39.0
+offset_left = 58.0
+offset_top = 31.0
+offset_right = 119.0
+offset_bottom = 62.0
 grow_horizontal = 0
 text = "Collect"
 

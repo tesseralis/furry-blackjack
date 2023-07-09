@@ -15,8 +15,10 @@ var awaiting_payout = false
 var awaiting_collection = false
 var anger = 0
 var expect_deal = false
+var skip_hand = false
 
 signal player_left(complaint)
+signal force_clear(cards: Array)
 
 func _ready():
 	stack.cards_updated.connect(_on_cards_updated)
@@ -70,6 +72,7 @@ func activate():
 	chat_bubble.visible = true
 	stack.visible = true
 	player_arm.visible = true
+	betting_area.visible = true
 	betting_area.activate()
 
 func leave(msg = "I'm outta here...", complaint = false):
@@ -97,6 +100,12 @@ func clear_chips()-> int:
 func _on_hand_start():
 	collect_chips()
 	awaiting_collection = false
+	if stack.get_card_values().size() != 0:
+		GlobalEvents.rule_broken.emit()
+		chat_bubble.show_text("Fine, I'll get rid of them myself...")
+		var curr_cards = stack.clear_cards()
+		force_clear.emit(curr_cards)
+	
 	if awaiting_payout:
 		awaiting_payout = false
 		GlobalEvents.rule_broken.emit()
@@ -135,11 +144,14 @@ func _on_hand_end():
 func _on_betting_area_add_button_pressed():
 	if not awaiting_payout:
 		chat_bubble.show_text("Oh thank you!")
+		increment_anger(-1)
 	elif awaiting_payout and betting_area.get_amount() >= 2 * current_bet:
 		collect_chips()
 		awaiting_payout = false
 
 func _on_rule_broken():
+	if !activated:
+		return
 	chat_bubble.show_text("What's the big idea?")
 	increment_anger()
 

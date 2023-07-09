@@ -66,6 +66,7 @@ visible = false
 position = Vector2(-1, -24)
 
 [node name="BettingArea" parent="." instance=ExtResource("2_y3nuf")]
+visible = false
 
 [node name="SpriteReference" type="Sprite2D" parent="."]
 visible = false

@@ -26,7 +26,7 @@ func add_card(card_value):
 	$DealAudio.play()
 	# Add the card and change the offset
 	var card = card_scene.instantiate()
-	if cards.get_child_count() == 1:
+	if cards.get_child_count() == 0:
 		card.set_facedown(true)
 	else:
 		card.set_facedown(false)

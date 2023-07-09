@@ -11,6 +11,7 @@ var chips: int = 0
 var activated = false
 var current_bet = 0
 var awaiting_payout = false
+var anger = 0
 
 signal player_left
 
@@ -57,11 +58,16 @@ func leave(msg = "I'm outta here..."):
 	player_left.emit(get_index())
 	betting_area.deactivate()
 
+func increment_anger(amount = 1):
+	anger += amount
+	if anger >= 3:
+		leave("I'm calling the manager!")
+
 func _on_hand_start():
 	if awaiting_payout:
-		# TODO get angry you haven't been paid
 		awaiting_payout = false
 		chat_bubble.show_text("What's the big idea?")
+		increment_anger()
 	if activated:
 		chat_bubble.show_text("Deal me in!")
 		current_bet = min(range(1, 4).pick_random(), chips)

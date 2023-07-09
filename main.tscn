@@ -173,7 +173,6 @@ text = "Time to get a new job..."
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_qpaut")
 autoplay = true
-bus = &"music"
 
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_player_timer_timeout"]
 [connection signal="pressed" from="GameOverScreen/Background/ReturnButton" to="." method="_on_return_button_pressed"]

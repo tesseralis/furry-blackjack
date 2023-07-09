@@ -23,6 +23,7 @@ func _process(delta):
 
 # TODO how to handle "face down" card?
 func add_card(card_value):
+	$DealAudio.play()
 	# Add the card and change the offset
 	var card = card_scene.instantiate()
 	if cards.get_child_count() == 1:
@@ -36,6 +37,7 @@ func add_card(card_value):
 	update_label()
 
 func clear_cards():
+	$PickupAudio.play()
 	var card_values = []
 	for card in cards.get_children():
 		card_values.append(card.value)

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3oes71l8inh4"
+path="res://.godot/imported/poker sfx card put down 0.wav-cfbc0d9cf64f93336e90f49d300e2f6f.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/fx/poker sfx card put down 0.wav"
+dest_files=["res://.godot/imported/poker sfx card put down 0.wav-cfbc0d9cf64f93336e90f49d300e2f6f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

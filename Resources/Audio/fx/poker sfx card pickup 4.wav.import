@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bgcb8ylowajgd"
+path="res://.godot/imported/poker sfx card pickup 4.wav-7c0ab030dda683a71ff21f7b0fc6538b.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/fx/poker sfx card pickup 4.wav"
+dest_files=["res://.godot/imported/poker sfx card pickup 4.wav-7c0ab030dda683a71ff21f7b0fc6538b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -166,8 +166,9 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 64
 text = "Time to get a new job..."
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_qpaut")
+volume_db = -8.901
 autoplay = true
 
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_player_timer_timeout"]

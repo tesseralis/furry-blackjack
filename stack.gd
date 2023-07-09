@@ -27,6 +27,7 @@ func _process(delta):
 	pass
 
 func add_card(card_value):
+	$DealAudio.play()
 	# Add the card and change the offset
 	var card = card_scene.instantiate()
 	card.set_value(card_value)
@@ -39,6 +40,7 @@ func add_card(card_value):
 
 
 func clear_cards():
+	$PickupAudio.play()
 	var card_values = []
 	for card in cards.get_children():
 		card_values.append(card.value)

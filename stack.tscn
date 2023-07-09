@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdsqfwh1asx8p"]
+[gd_scene load_steps=4 format=3 uid="uid://bdsqfwh1asx8p"]
 
 [ext_resource type="Script" path="res://stack.gd" id="1_b5110"]
+[ext_resource type="AudioStream" uid="uid://d3oes71l8inh4" path="res://Resources/Audio/fx/poker sfx card put down 0.wav" id="2_jfmoc"]
+[ext_resource type="AudioStream" uid="uid://m8nlva7xh2pv" path="res://Resources/Audio/fx/poker sfx card pickup 0.wav" id="3_0mcca"]
 
 [node name="Stack" type="Node2D"]
 script = ExtResource("1_b5110")
@@ -38,6 +40,14 @@ offset_right = 21.0
 offset_bottom = -33.0
 text = "20"
 horizontal_alignment = 1
+
+[node name="DealAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jfmoc")
+max_polyphony = 10
+
+[node name="PickupAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0mcca")
+volume_db = -3.0
 
 [connection signal="pressed" from="DealButton" to="." method="_on_deal_button_pressed"]
 [connection signal="pressed" from="ClearButton" to="." method="_on_clear_button_pressed"]

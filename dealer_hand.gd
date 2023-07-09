@@ -23,10 +23,13 @@ func _process(delta):
 func add_card(card_value):
 	# Add the card and change the offset
 	var card = card_scene.instantiate()
+	if cards.get_child_count() == 1:
+		card.set_facedown(true)
+	else:
+		card.set_facedown(false)
 	card.set_value(card_value)
 	card.position = card_pos
 	card_pos += offset
-	# TODO offset the card's position
 	cards.add_child(card)
 	update_label()
 

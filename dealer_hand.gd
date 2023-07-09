@@ -13,6 +13,8 @@ signal clear_button_pressed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalEvents.hand_end.connect(_on_hand_end)
+	GlobalEvents.hand_start.connect(_on_hand_start)
 	update_label()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,6 +52,19 @@ func update_label():
 func get_card_values() -> Array:
 	return cards.get_children().map(func(child): return child.get_int_value())
 
+func get_public_card() -> int:
+	if cards.get_children().size() < 2:
+		return 0
+	return cards.get_child(1).get_int_value()
+
+func _on_hand_end():
+	$DealButton.disabled = true
+	$ClearButton.disabled = false
+	
+func _on_hand_start():
+	$DealButton.disabled = false
+	$ClearButton.disabled = true
+
 func _on_deal_button_pressed():
 	deal_button_pressed.emit()
 
@@ -57,7 +72,3 @@ func _on_deal_button_pressed():
 func _on_clear_button_pressed():
 	clear_button_pressed.emit()
 
-func get_public_card() -> int:
-	if cards.get_children().size() < 2:
-		return 0
-	return cards.get_child(1).get_int_value()

@@ -103,4 +103,56 @@ text = "New Hand"
 wait_time = 30.0
 autostart = true
 
+[node name="GameOverScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="Background" type="ColorRect" parent="GameOverScreen"]
+offset_left = 299.0
+offset_top = 114.0
+offset_right = 1609.0
+offset_bottom = 1098.0
+
+[node name="Title" type="Label" parent="GameOverScreen/Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -195.5
+offset_right = 195.5
+offset_bottom = 91.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "You're Fired!"
+
+[node name="Description" type="Label" parent="GameOverScreen/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReturnButton" type="Button" parent="GameOverScreen/Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -362.5
+offset_top = -166.0
+offset_right = 362.5
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Time to get a new job..."
+
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_player_timer_timeout"]

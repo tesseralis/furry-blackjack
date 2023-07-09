@@ -8,6 +8,22 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"Card",
+"language": &"GDScript",
+"path": "res://card.gd"
+}, {
+"base": "Resource",
+"class": &"HitStrategy",
+"language": &"GDScript",
+"path": "res://Resources/Strategies/HitStrategy.gd"
+}]
+_global_script_class_icons={
+"Card": "",
+"HitStrategy": ""
+}
+
 [application]
 
 config/name="furry-blackjack"

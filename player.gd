@@ -3,6 +3,7 @@ extends Node2D
 @onready var stack = $Stack
 @onready var betting_area = $BettingArea
 @onready var chat_bubble = $ChatBubble
+@onready var player_arm = $AnimatedSprite2D
 @export var strategy: HitStrategy
 var dealer_hand
 
@@ -43,6 +44,7 @@ func _on_cards_updated(cards: Array):
 	else:
 		if strategy.should_hit(dealer_card, cards):
 			chat_bubble.show_text("Hit me!")
+			player_arm.play("hit")
 			expect_deal = true
 		else:
 			expect_deal = false
@@ -50,6 +52,8 @@ func _on_cards_updated(cards: Array):
 				chat_bubble.show_text("Blackjack!")
 			else:
 				chat_bubble.show_text("I'm staying")
+				player_arm.play("stand")
+
 
 
 func set_dealer_card(value: int):

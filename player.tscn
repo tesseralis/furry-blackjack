@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3mp64e0scybk"]
+[gd_scene load_steps=13 format=3 uid="uid://b3mp64e0scybk"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_6w1sd"]
 [ext_resource type="PackedScene" uid="uid://bdsqfwh1asx8p" path="res://stack.tscn" id="1_hum8s"]
@@ -6,6 +6,24 @@
 [ext_resource type="Texture2D" uid="uid://bxh0ui5auimmn" path="res://Art/dog.png" id="4_qqvh7"]
 [ext_resource type="Script" path="res://ChatBubble.gd" id="5_4aio1"]
 [ext_resource type="Texture2D" uid="uid://dxe8fd14wx0yi" path="res://icon.svg" id="5_iuxaq"]
+[ext_resource type="Texture2D" uid="uid://4faxtnvut23b" path="res://Art/playerhandanim1.png" id="7_vn381"]
+[ext_resource type="Texture2D" uid="uid://buuaqiejwywoi" path="res://Art/playerhandanim2.png" id="8_8jo1t"]
+[ext_resource type="Texture2D" uid="uid://cblykuen8h3t4" path="res://Art/playerhandstand1.png" id="9_bheop"]
+[ext_resource type="Texture2D" uid="uid://c0rk2h2fuoi8c" path="res://Art/playerhandstand2.png" id="10_creyk"]
+[ext_resource type="Texture2D" uid="uid://cpkhhon4fh4ek" path="res://Art/playerhandstand3.png" id="11_4efk4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0mly"]
+animations = [{
+"frames": [null, ExtResource("7_vn381"), ExtResource("7_vn381"), ExtResource("8_8jo1t"), ExtResource("7_vn381"), ExtResource("7_vn381"), null],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [null, ExtResource("9_bheop"), ExtResource("9_bheop"), ExtResource("10_creyk"), ExtResource("11_4efk4"), ExtResource("11_4efk4"), ExtResource("10_creyk"), null],
+"loop": false,
+"name": &"stand",
+"speed": 5.0
+}]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_6w1sd")
@@ -45,5 +63,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_group_ = true
+
+[node name="guest3hand" type="AnimatedSprite2D" parent="."]
+position = Vector2(69, -52)
+scale = Vector2(0.473274, 0.452953)
+frames = SubResource("SpriteFrames_n0mly")
+animation = &"hit"
+frame = 4
 
 [connection signal="add_button_pressed" from="BettingArea" to="." method="_on_betting_area_add_button_pressed"]

@@ -2,7 +2,7 @@ extends Node2D
 class_name Card
 
 @onready var value: String
-@onready var facedown = $facedown
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,9 +26,9 @@ func get_int_value() -> int:
 
 func set_facedown(is_facedown: bool):
 	if is_facedown:
-		facedown.visible = true
+		$facedown.visible = true
 	else:
-		facedown.visible = false
+		$facedown.visible = false
 		
 func get_facedown() -> bool:
-	return facedown.visible == true
+	return $facedown.visible == true

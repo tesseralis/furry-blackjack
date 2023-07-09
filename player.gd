@@ -15,7 +15,7 @@ var awaiting_payout = false
 var anger = 0
 var expect_deal = false
 
-signal player_left
+signal player_left(complaint)
 
 func _ready():
 	stack.cards_updated.connect(_on_cards_updated)
@@ -69,20 +69,20 @@ func activate():
 	player_arm.visible = true
 	betting_area.activate()
 
-func leave(msg = "I'm outta here..."):
+func leave(msg = "I'm outta here...", complaint = false):
 	chat_bubble.show_text(msg)
 	await get_tree().create_timer(2.0).timeout
 	activated = false
 	chat_bubble.visible = false
 	stack.visible = false
 	player_arm.visible = false
-	player_left.emit()
+	player_left.emit(complaint)
 	betting_area.deactivate()
 
 func increment_anger(amount = 1):
 	anger += amount
 	if anger >= 3:
-		leave("I'm calling the manager!")
+		leave("I'm calling the manager!", true)
 
 func collect_chips():
 	chips += betting_area.clear_chips()

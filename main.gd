@@ -17,6 +17,7 @@ enum State {
 # List of indices of seats with active players
 var active_seats = []
 var chips = 50
+var complaints = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -75,8 +76,12 @@ func _on_bet_collect_button_pressed(id):
 	var amount = players.get_child(id).clear_chips()
 	set_chips(chips + amount)
 
-func _on_player_left(id):
+func _on_player_left(complaint, id):
 	$PlayerSprites.get_child(id).visible = false
+	if complaint:
+		complaints += 1
+		if complaints >= 5:
+			end_game("Too many customers complained...")
 
 func activate_random_player():
 	# choose an unactivated seat

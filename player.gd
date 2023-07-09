@@ -80,6 +80,7 @@ func _on_hand_end():
 			chat_bubble.show_text("Rats...")
 		else:
 			chat_bubble.show_text("It's a draw...")
+			chips += betting_area.clear_chips()
 
 	if chips <= 0:
 		leave()

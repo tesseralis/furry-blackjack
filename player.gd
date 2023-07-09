@@ -4,6 +4,7 @@ extends Node2D
 @onready var betting_area = $BettingArea
 @onready var chat_bubble = $ChatBubble
 @onready var player_arm = $PlayerArm
+@onready var anger_indicator = $AngerIndicator
 @export var strategy: HitStrategy
 var dealer_hand
 
@@ -16,6 +17,7 @@ var awaiting_collection = false
 var anger = 0
 var expect_deal = false
 var skip_hand = false
+@onready var max_anger = randi_range(3, 7)
 
 signal player_left(complaint)
 signal force_clear(cards: Array)
@@ -69,10 +71,13 @@ func set_dealer_card(value: int):
 func activate():
 	anger = 0
 	activated = true
+	chat_bubble.hide_text()
 	chat_bubble.visible = true
 	stack.visible = true
 	player_arm.visible = true
 	betting_area.visible = true
+	anger_indicator.visible = true
+	anger_indicator.set_anger(0, max_anger)
 	betting_area.activate()
 
 func leave(msg = "I'm outta here...", complaint = false):
@@ -82,13 +87,17 @@ func leave(msg = "I'm outta here...", complaint = false):
 	chat_bubble.visible = false
 	stack.visible = false
 	player_arm.visible = false
+	anger_indicator.visible = false
 	player_left.emit(complaint)
 	betting_area.deactivate()
 
 func increment_anger(amount = 1):
 	anger += amount
-	if anger >= 3:
+	if anger >= max_anger:
 		leave("I'm calling the manager!", true)
+	if anger < 0:
+		anger = 0
+	anger_indicator.set_anger(anger, max_anger)
 
 func collect_chips():
 	chips += betting_area.clear_chips()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3mp64e0scybk"]
+[gd_scene load_steps=14 format=3 uid="uid://b3mp64e0scybk"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_6w1sd"]
 [ext_resource type="PackedScene" uid="uid://bdsqfwh1asx8p" path="res://stack.tscn" id="1_hum8s"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cblykuen8h3t4" path="res://Art/playerhandstand1.png" id="9_bheop"]
 [ext_resource type="Texture2D" uid="uid://c0rk2h2fuoi8c" path="res://Art/playerhandstand2.png" id="10_creyk"]
 [ext_resource type="Texture2D" uid="uid://cpkhhon4fh4ek" path="res://Art/playerhandstand3.png" id="11_4efk4"]
+[ext_resource type="PackedScene" uid="uid://cccjrjamjx54n" path="res://anger_indicator.tscn" id="12_mu1lk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n0mly"]
 animations = [{
@@ -80,14 +81,12 @@ position = Vector2(1, -516)
 script = ExtResource("5_4aio1")
 
 [node name="Background" type="Sprite2D" parent="ChatBubble"]
-visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(3, -1)
 texture = ExtResource("5_iuxaq")
 metadata/_edit_group_ = true
 
 [node name="Text" type="Label" parent="ChatBubble"]
-visible = false
 offset_left = -46.0
 offset_top = -41.0
 offset_right = 50.0
@@ -105,6 +104,10 @@ scale = Vector2(0.473274, 0.452953)
 sprite_frames = SubResource("SpriteFrames_n0mly")
 animation = &"hit"
 frame = 4
+
+[node name="AngerIndicator" parent="." instance=ExtResource("12_mu1lk")]
+visible = false
+position = Vector2(85, -523)
 
 [connection signal="add_button_pressed" from="BettingArea" to="." method="_on_betting_area_add_button_pressed"]
 [connection signal="collect_button_pressed" from="BettingArea" to="." method="_on_betting_area_collect_button_pressed"]
